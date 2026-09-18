@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/modernist-f0e2cd6c-c8dd-4634-b5d4-df5b874bb24e/styles.css">
+  <script src="_ds/modernist-f0e2cd6c-c8dd-4634-b5d4-df5b874bb24e/_ds_bundle.js"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="./image-slot.js"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body { margin: 0; text-wrap: pretty; }
+    a { text-decoration: none; }
+  </style>
+</helmet>
+
+<div id="blush-site" style="background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); overflow-x:hidden; --color-accent:#C1614C; --color-accent-100:#F7E9E4; --color-accent-200:#EFD3C8; --color-accent-300:#E1B29E; --color-accent-400:#CF8F73; --color-accent-500:#C1614C; --color-accent-600:#A94F3C; --color-accent-700:#8B3F2F; --color-accent-800:#6E3225; --color-accent-900:#4A2117; --color-accent-2:#C1614C; --color-accent-2-100:#F7E9E4; --color-accent-2-600:#A94F3C; --color-accent-2-700:#8B3F2F; --color-accent-2-800:#6E3225;">
+
+  <nav style="position:sticky; top:0; z-index:20; background:var(--color-bg); border-bottom:2px solid var(--color-divider); display:flex; align-items:center; justify-content:space-between; gap:var(--space-4); flex-wrap:wrap; padding:var(--space-4) clamp(20px,5vw,64px);">
+    <a href="#hero" style="display:flex; align-items:center; gap:var(--space-2);">
+      <img src="assets/blush-logo.png" alt="Blush Salão de Beleza" style="width:40px; height:40px; border-radius:50%; display:block;">
+    </a>
+    <div style="display:flex; align-items:center; gap:var(--space-6); flex-wrap:wrap;">
+      <a href="#sobre" style="color:var(--color-text); font-size:14px; font-weight:600;">Sobre</a>
+      <a href="#diferenciais" style="color:var(--color-text); font-size:14px; font-weight:600;">Diferenciais</a>
+      <a href="#avaliacoes" style="color:var(--color-text); font-size:14px; font-weight:600;">Avaliações</a>
+      <a href="#localizacao" style="color:var(--color-text); font-size:14px; font-weight:600;">Localização</a>
+      <a href="{{ waLink }}" target="_blank" rel="noopener" class="btn btn-primary">
+        <i data-lucide="message-circle" style="width:16px; height:16px;"></i>WhatsApp
+      </a>
+    </div>
+  </nav>
+
+  <section data-reveal="1" style="opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease; display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:clamp(24px,5vw,64px); align-items:center; padding:clamp(48px,8vw,96px) clamp(20px,5vw,64px) clamp(40px,6vw,72px); max-width:1280px; margin:0 auto;">
+    <div>
+      <span style="display:block; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-accent-700); font-weight:600; margin-bottom:var(--space-3);">Cabeleireiro · Independência, Porto Alegre</span>
+      <h1 style="font-size:clamp(34px,4.8vw,54px); line-height:1.08; letter-spacing:-0.02em; margin:0 0 var(--space-4);">Um salão avaliado 4,8 de 5 por quem já passou por aqui.</h1>
+      <p style="font-size:17px; line-height:1.6; color:color-mix(in srgb, var(--color-text) 78%, transparent); max-width:52ch; margin:0 0 var(--space-6);">A Blush Salão de Beleza fica no Mini Shopping Independência e reúne 27 avaliações no Google — cortes, hidratação capilar e atendimento estão entre o que os clientes mais destacam. Um negócio de mulheres empreendedoras, aberto a toda a comunidade.</p>
+      <div style="display:flex; gap:var(--space-3); flex-wrap:wrap;">
+        <a href="{{ waLink }}" target="_blank" rel="noopener" class="btn btn-primary">
+          <i data-lucide="calendar-check" style="width:16px; height:16px;"></i>Agendar pelo WhatsApp
+        </a>
+        <a href="#localizacao" class="btn btn-ghost">
+          <i data-lucide="map-pin" style="width:16px; height:16px;"></i>Ver localização
+        </a>
+      </div>
+    </div>
+    <figure class="grayscale" style="margin:0;">
+      <img src="assets/salao-interior.jpg" alt="Interior do salão Blush, com cadeiras de atendimento e recepção" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;">
+    </figure>
+  </section>
+
+  <hr class="hr" style="max-width:1280px; margin:0 auto;">
+
+  <section id="sobre" data-reveal="1" style="opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease; max-width:1280px; margin:0 auto; padding:clamp(48px,7vw,80px) clamp(20px,5vw,64px);">
+    <span style="display:block; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-accent-700); font-weight:600; margin-bottom:var(--space-3);">Sobre a Blush</span>
+    <h2 style="font-size:clamp(26px,3.2vw,36px); max-width:36ch; margin:0 0 var(--space-4);">Cuidado capilar com profissionais que os clientes descrevem como competentes e sempre em busca de inovar.</h2>
+    <p style="font-size:16px; line-height:1.65; color:color-mix(in srgb, var(--color-text) 78%, transparent); max-width:62ch; margin:0;">Localizada no Mini Shopping Independência, a Blush é um espaço conduzido por mulheres empreendedoras e reconhecido por acolher a comunidade LGBTQ+. Entre os pontos mais citados pelos clientes estão o cuidado com os cortes e os produtos de hidratação capilar utilizados nos atendimentos.</p>
+  </section>
+
+  <hr class="hr" style="max-width:1280px; margin:0 auto;">
+
+  <section id="diferenciais" data-reveal="1" style="opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease; max-width:1280px; margin:0 auto; padding:clamp(48px,7vw,80px) clamp(20px,5vw,64px);">
+    <span style="display:block; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-accent-700); font-weight:600; margin-bottom:var(--space-6);">Diferenciais</span>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:var(--space-8);">
+      <sc-for list="{{ diferenciais }}" as="item" hint-placeholder-count="3">
+        <div style="border-top:2px solid var(--color-divider); padding-top:var(--space-4);">
+          <div style="display:flex; align-items:center; gap:var(--space-2); margin-bottom:var(--space-2);">
+            <div style="width:10px; height:10px; background:var(--color-accent);"></div>
+            <span style="font-family:var(--font-heading); font-weight:800; font-size:14px;">{{ item.num }}</span>
+          </div>
+          <h3 style="font-size:21px; margin:0 0 var(--space-2);">{{ item.title }}</h3>
+          <p style="font-size:15px; line-height:1.6; color:color-mix(in srgb, var(--color-text) 78%, transparent); margin:0;">{{ item.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <hr class="hr" style="max-width:1280px; margin:0 auto;">
+
+  <section id="avaliacoes" data-reveal="1" style="opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease; max-width:1280px; margin:0 auto; padding:clamp(48px,7vw,80px) clamp(20px,5vw,64px);">
+    <span style="display:block; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-accent-700); font-weight:600; margin-bottom:var(--space-3);">Avaliações no Google</span>
+    <div style="display:flex; align-items:baseline; gap:var(--space-3); margin-bottom:var(--space-6); flex-wrap:wrap;">
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:40px; color:var(--color-accent);">4,8</span>
+      <span style="display:flex; gap:2px; color:var(--color-accent);">
+        <i data-lucide="star" style="width:18px; height:18px; fill:currentColor;"></i>
+        <i data-lucide="star" style="width:18px; height:18px; fill:currentColor;"></i>
+        <i data-lucide="star" style="width:18px; height:18px; fill:currentColor;"></i>
+        <i data-lucide="star" style="width:18px; height:18px; fill:currentColor;"></i>
+        <i data-lucide="star" style="width:18px; height:18px; fill:currentColor;"></i>
+      </span>
+      <span style="font-size:15px; color:color-mix(in srgb, var(--color-text) 78%, transparent);">27 avaliações</span>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:var(--space-6);">
+      <sc-for list="{{ avaliacoes }}" as="quote" hint-placeholder-count="3">
+        <div class="card">
+          <p class="card-body" style="font-size:16px; line-height:1.6; margin:0 0 var(--space-3);">"{{ quote }}"</p>
+          <p class="card-meta" style="margin:0;">Avaliação do Google</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <hr class="hr" style="max-width:1280px; margin:0 auto;">
+
+  <section data-reveal="1" style="opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease; max-width:1280px; margin:0 auto; padding:clamp(48px,7vw,80px) clamp(20px,5vw,64px);">
+    <span style="display:block; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-accent-700); font-weight:600; margin-bottom:var(--space-6);">O ambiente</span>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:var(--space-4);">
+      <figure class="grayscale" style="margin:0;">
+        <img src="assets/salao-interior.jpg" alt="Recepção e cadeiras de atendimento da Blush" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;">
+      </figure>
+      <figure class="grayscale" style="margin:0;">
+        <image-slot id="galeria-1" shape="rect" placeholder="foto: cortes e finalização" style="width:100%; aspect-ratio:1/1;"></image-slot>
+      </figure>
+      <figure class="grayscale" style="margin:0;">
+        <image-slot id="galeria-2" shape="rect" placeholder="foto: atendimento" style="width:100%; aspect-ratio:1/1;"></image-slot>
+      </figure>
+    </div>
+  </section>
+
+  <hr class="hr" style="max-width:1280px; margin:0 auto;">
+
+  <section id="localizacao" data-reveal="1" style="opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease; max-width:1280px; margin:0 auto; padding:clamp(48px,7vw,80px) clamp(20px,5vw,64px); display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:clamp(24px,5vw,64px);">
+    <div>
+      <span style="display:block; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-accent-700); font-weight:600; margin-bottom:var(--space-3);">Localização e horário</span>
+      <h2 style="font-size:clamp(24px,3vw,32px); margin:0 0 var(--space-4);">Mini Shopping Independência</h2>
+      <div style="display:flex; gap:var(--space-2); margin-bottom:var(--space-3);">
+        <i data-lucide="map-pin" style="width:18px; height:18px; flex-shrink:0; margin-top:2px;"></i>
+        <p style="font-size:15px; line-height:1.6; margin:0;">Av. Independência, 383 - Lj 105<br>Independência, Porto Alegre - RS, 90035-074</p>
+      </div>
+      <div style="display:flex; gap:var(--space-2); margin-bottom:var(--space-6);">
+        <i data-lucide="clock" style="width:18px; height:18px; flex-shrink:0; margin-top:2px;"></i>
+        <div style="font-size:15px; line-height:1.6;">
+          <div>Segunda a sexta: 9h às 19h</div>
+          <div>Sábado: 9h às 18h</div>
+          <div>Domingo: fechado</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:var(--space-3); flex-wrap:wrap;">
+        <a href="{{ waLink }}" target="_blank" rel="noopener" class="btn btn-primary">
+          <i data-lucide="message-circle" style="width:16px; height:16px;"></i>(51) 99916-9910
+        </a>
+        <a href="https://www.facebook.com" target="_blank" rel="noopener" class="btn btn-ghost">
+          <i data-lucide="external-link" style="width:16px; height:16px;"></i>Facebook
+        </a>
+      </div>
+    </div>
+    <iframe title="Mapa: Blush Salão de Beleza" src="https://www.google.com/maps?q=Av.+Independ%C3%AAncia%2C+383+-+Independ%C3%AAncia%2C+Porto+Alegre+-+RS%2C+90035-074&output=embed" style="width:100%; height:100%; min-height:280px; border:0; filter:grayscale(1) contrast(1.05);" loading="lazy"></iframe>
+  </section>
+
+  <section style="background:var(--color-accent); color:var(--color-bg);">
+    <div style="max-width:1280px; margin:0 auto; padding:clamp(48px,7vw,80px) clamp(20px,5vw,64px); text-align:left;">
+      <h2 style="font-size:clamp(30px,4vw,44px); max-width:20ch; margin:0 0 var(--space-6); color:var(--color-bg);">Marque seu horário na Blush.</h2>
+      <div style="display:flex; gap:var(--space-3); flex-wrap:wrap; align-items:center;">
+        <a href="{{ waLink }}" target="_blank" rel="noopener" class="btn btn-ghost" style="color:var(--color-bg); border-color:var(--color-bg);">
+          <i data-lucide="message-circle" style="width:16px; height:16px;"></i>Agendar pelo WhatsApp
+        </a>
+        <span style="font-size:15px;">(51) 99916-9910</span>
+      </div>
+    </div>
+  </section>
+
+  <footer style="max-width:1280px; margin:0 auto; padding:var(--space-8) clamp(20px,5vw,64px); display:flex; justify-content:space-between; gap:var(--space-6); flex-wrap:wrap; font-size:13px; color:color-mix(in srgb, var(--color-text) 70%, transparent);">
+    <div>
+      <div style="display:flex; align-items:center; gap:var(--space-2); margin-bottom:var(--space-2);">
+        <img src="assets/blush-logo.png" alt="Blush Salão de Beleza" style="width:24px; height:24px; border-radius:50%; display:block;">
+        <span style="font-family:var(--font-heading); font-weight:800; font-size:16px; color:var(--color-text);">BLUSH SALÃO DE BELEZA</span>
+      </div>
+      <div>Av. Independência, 383 - Lj 105, Porto Alegre - RS</div>
+      <div>(51) 99916-9910</div>
+    </div>
+    <div>4,8 ★ · 27 avaliações no Google</div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    if (window.lucide) window.lucide.createIcons();
+    const root = document.getElementById('blush-site');
+    if (root) {
+      const reveal = (el) => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; };
+      const els = Array.from(root.querySelectorAll('[data-reveal]'));
+      const toObserve = [];
+      els.forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight) reveal(el); else toObserve.push(el);
+      });
+      if ('IntersectionObserver' in window && toObserve.length) {
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) { reveal(e.target); obs.unobserve(e.target); }
+          });
+        }, { threshold: 0.12 });
+        toObserve.forEach((el) => obs.observe(el));
+      } else {
+        toObserve.forEach(reveal);
+      }
+    }
+  }
+
+  renderVals() {
+    return {
+      waLink: "https://wa.me/5551999169910?text=" + encodeURIComponent("Olá! Gostaria de agendar um horário na Blush."),
+      diferenciais: [
+        { num: "01", title: "Nota 4,8 no Google", desc: "27 avaliações de clientes reais, com destaque para o atendimento e os cortes." },
+        { num: "02", title: "Empresa acolhedora", desc: "A Blush se identifica como uma empresa que acolhe a comunidade LGBTQ+." },
+        { num: "03", title: "Empreendedoras à frente", desc: "Um negócio conduzido por mulheres empreendedoras, no coração da Independência." }
+      ],
+      avaliacoes: [
+        "Profissionais muito competentes, sempre inovando os serviços",
+        "Gosto muito dos produtos de hidratação capilar também!",
+        "O corte de meu cabelo ficou lindo!"
+      ]
+    };
+  }
+}
+
+</script>
+</body>
+</html>
