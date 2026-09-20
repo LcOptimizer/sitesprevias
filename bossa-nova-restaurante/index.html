@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/broadsheet-7bdf88a3-929c-4bb9-9c9d-bc7404116130/styles.css">
+<script src="_ds/broadsheet-7bdf88a3-929c-4bb9-9c9d-bc7404116130/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+/* palette recolored from the Bossa Nova logo — warm terracotta/brown on cream, replacing the system's default cyan/magenta */
+:root{
+  --color-bg:#f5ecd9;
+  --color-surface:#efe3cc;
+  --color-text:#3b2415;
+  --color-divider:color-mix(in srgb, #3b2415 16%, transparent);
+  --color-accent:#c1651f;
+  --color-accent-100:#fbe9da;
+  --color-accent-200:#f3cda8;
+  --color-accent-300:#e7a86e;
+  --color-accent-400:#d5813f;
+  --color-accent-500:#c1651f;
+  --color-accent-600:#a3521a;
+  --color-accent-700:#834116;
+  --color-accent-800:#663212;
+  --color-accent-900:#46220c;
+  --color-accent-2:#8a5a20;
+  --color-accent-2-100:#f3e7d3;
+  --color-accent-2-200:#e3c99a;
+  --color-accent-2-300:#cba15c;
+  --color-accent-2-400:#a97f3a;
+  --color-accent-2-500:#8a5a20;
+  --color-accent-2-600:#714a1a;
+  --color-accent-2-700:#5b3a15;
+  --color-accent-2-800:#452b10;
+  --color-accent-2-900:#2f1c0a;
+}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;text-wrap:pretty}
+a{color:var(--color-accent-700);text-decoration:none}
+a:hover{color:var(--color-accent-900);text-decoration:underline}
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)}
+.nav{padding-inline:max(clamp(20px,5vw,72px),calc((100% - 1200px)/2 + clamp(20px,5vw,72px)));padding-block:var(--space-4);position:sticky;top:0;background:var(--color-bg);z-index:20;border-bottom:1px solid color-mix(in srgb, var(--color-text) 10%, transparent)}
+.nav a{white-space:nowrap}
+@media (max-width:720px){.nav a:not(.btn){display:none}.nav{gap:var(--space-2);padding-block:var(--space-2)}.nav-brand{font-size:16px}.nav .btn{padding:8px 14px;font-size:14px}}
+.kicker{display:block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 65%, transparent);margin:0 0 var(--space-3)}
+.hero{padding:var(--space-8) 0 var(--space-8);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--space-6) var(--space-8);align-items:start}
+@media (max-width:720px){.hero{grid-template-columns:1fr;padding-top:var(--space-6)}.hero-figure{order:-1}}
+.hero-copy .display{font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:clamp(38px,5.2vw,64px);line-height:1.05;letter-spacing:-0.02em;margin:0}
+.hero-copy .sub{font-size:18px;line-height:1.6;max-width:52ch;margin:var(--space-4) 0 0;color:color-mix(in srgb, var(--color-text) 82%, transparent)}
+.row{display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-5)}
+.hero-figure{margin:0}
+.hero-figure .print{aspect-ratio:4/3}
+.stats{padding:var(--space-6) 0}
+.rule-head{height:5px;border:0;margin:0;border-top:2px solid var(--color-text);border-bottom:1px solid var(--color-text)}
+.rule-cut{height:0;border:0;border-top:1px solid var(--color-text);margin:0}
+.dateline{display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2) var(--space-6);margin:0;padding:var(--space-3) 0;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 65%, transparent)}
+.index{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-3) var(--space-6);padding:var(--space-4) 0}
+.ix{display:flex;flex-direction:column;gap:4px;margin:0}
+.ix-num{font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:28px;color:var(--color-accent-700)}
+.ix-label{font-size:13px;color:color-mix(in srgb, var(--color-text) 70%, transparent)}
+@media (max-width:720px){.index{grid-template-columns:repeat(2,1fr)}}
+section.block{padding:var(--space-8) 0}
+.tags-row{display:flex;gap:var(--space-2);flex-wrap:wrap;margin-top:var(--space-4)}
+.about-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--space-6) var(--space-8);align-items:center}
+@media (max-width:720px){.about-grid{grid-template-columns:1fr}.about-grid figure{order:-1}}
+.about-fig .print{aspect-ratio:1/1}
+h2.section-title{font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:clamp(28px,3.2vw,38px);letter-spacing:-0.015em;margin:0 0 var(--space-3)}
+p.section-sub{font-size:16px;line-height:1.65;max-width:60ch;color:color-mix(in srgb, var(--color-text) 80%, transparent);margin:0}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4);margin-top:var(--space-6)}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);margin-top:var(--space-6)}
+@media (max-width:900px){.grid-4{grid-template-columns:repeat(2,1fr)}.grid-3{grid-template-columns:1fr}}
+@media (max-width:520px){.grid-4{grid-template-columns:1fr}}
+.menu-photo{width:96px;height:96px;margin:0 0 var(--space-3)}
+.menu-photo image-slot{border-radius:var(--radius-md)}
+.menu-price{font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:20px;margin:var(--space-2) 0 0}
+.gallery-item .halftone{border-radius:var(--radius-md);overflow:hidden}
+.gallery-item .halftone image-slot{aspect-ratio:4/5;display:block}
+.gallery-cap{font-size:13px;margin-top:var(--space-2);color:color-mix(in srgb, var(--color-text) 65%, transparent)}
+.rating-row{display:flex;align-items:baseline;gap:var(--space-4);flex-wrap:wrap}
+.rating-num{font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:56px;line-height:1;color:var(--color-accent-700)}
+.rating-meta{font-size:15px;color:color-mix(in srgb, var(--color-text) 75%, transparent)}
+.quote-text{font-family:var(--font-heading);font-style:italic;font-weight:400;font-size:18px;line-height:1.55;margin:0}
+.loc-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--space-6) var(--space-8);align-items:start}
+@media (max-width:720px){.loc-grid{grid-template-columns:1fr}}
+.loc-fig .print{aspect-ratio:4/3}
+.loc-detail{display:flex;gap:var(--space-3);margin:0 0 var(--space-4)}
+.loc-detail .label{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:color-mix(in srgb, var(--color-text) 60%, transparent);min-width:110px}
+.loc-detail .val{font-size:16px}
+.close-block{padding:var(--space-9) 0;text-align:left}
+.close-block h2{font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:clamp(30px,4vw,44px);letter-spacing:-0.02em;margin:0;max-width:26ch}
+.close-block .sub{font-size:16px;line-height:1.6;max-width:56ch;margin:var(--space-4) 0 0;color:color-mix(in srgb, var(--color-text) 80%, transparent)}
+footer.site-footer{padding:var(--space-6) 0 var(--space-8);border-top:1px solid color-mix(in srgb, var(--color-text) 10%, transparent);font-size:14px;color:color-mix(in srgb, var(--color-text) 70%, transparent)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:var(--space-6)}
+@media (max-width:720px){.footer-grid{grid-template-columns:1fr;gap:var(--space-4)}}
+.footer-grid h4{font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin:0 0 var(--space-2);color:color-mix(in srgb, var(--color-text) 55%, transparent)}
+.footer-grid p{margin:0 0 6px}
+.whatsapp-fab{position:fixed;bottom:20px;right:20px;z-index:30}
+@media (max-width:720px){.whatsapp-fab{bottom:14px;right:14px}.whatsapp-fab .btn{padding:12px 18px}}
+@media (max-width:480px){.rating-row{flex-direction:column;gap:var(--space-2)}.loc-detail{flex-direction:column;gap:2px}.loc-detail .label{min-width:0}.dateline{gap:var(--space-2) var(--space-4);font-size:12px}}
+</style>
+</helmet>
+
+<nav class="nav">
+  <span class="nav-brand">Bossa Nova</span>
+  <a href="#sobre">Sobre</a>
+  <a href="#cardapio">Cardápio</a>
+  <a href="#diferenciais">Diferenciais</a>
+  <a href="#avaliacoes">Avaliações</a>
+  <a href="#localizacao">Localização</a>
+  <a class="btn btn-primary" href="{{ whatsappLink }}" target="_blank" rel="noopener">{{ ctaLabel }}</a>
+</nav>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="kicker">Restaurante · Centro, São Leopoldo</span>
+      <h1 class="display">Rodízio de massas e filés em um espaço elegante e aconchegante.</h1>
+      <p class="sub">Cardápio à la carte com rodízio de massas e filés, além de polenta e sopa de capeletti. Refeição no local, para viagem ou entrega, no Centro de São Leopoldo.</p>
+      <div class="row">
+        <a class="btn btn-primary" href="{{ whatsappLink }}" target="_blank" rel="noopener">{{ ctaLabel }}</a>
+        <a class="btn btn-ghost" href="#cardapio">Ver cardápio</a>
+      </div>
+    </div>
+    <figure class="hero-figure cmyk">
+      <div class="print"><image-slot id="hero-photo" shape="rect" placeholder="Foto do rodízio ou do salão"></image-slot></div>
+    </figure>
+  </section>
+
+  <section class="stats">
+    <hr class="rule-head">
+    <p class="dateline">
+      <span>Avaliado no Google</span>
+      <span>Aberto hoje</span>
+      <span>R$ 40–60 por pessoa</span>
+    </p>
+    <hr class="rule-cut">
+    <div class="index">
+      <div class="ix"><span class="ix-num">4,6</span><span class="ix-label">nota média (1.376 avaliações)</span></div>
+      <div class="ix"><span class="ix-num">22h30</span><span class="ix-label">fecha hoje</span></div>
+      <div class="ix"><span class="ix-num">R$ 40–60</span><span class="ix-label">ticket médio por pessoa</span></div>
+      <div class="ix"><span class="ix-num">3</span><span class="ix-label">formas de pedir: local, viagem ou entrega</span></div>
+    </div>
+    <hr class="rule-cut">
+  </section>
+
+  <section class="block" id="sobre">
+    <div class="about-grid">
+      <div>
+        <span class="kicker">Sobre</span>
+        <h2 class="section-title">Um espaço pensado para refeições sem pressa</h2>
+        <p class="section-sub">A casa é conhecida pelo rodízio de massas e filés, com polenta e sopa de capeletti no cardápio, servidos em um ambiente elegante e aconchegante no Centro de São Leopoldo. O salão foi recentemente renovado, com mesas e cadeiras novas.</p>
+        <div class="tags-row">
+          <span class="tag tag-accent">Refeição no local</span>
+          <span class="tag tag-accent">Para viagem</span>
+          <span class="tag tag-accent">Entrega</span>
+          <span class="tag tag-accent-2">Empresa liderada por mulheres</span>
+        </div>
+      </div>
+      <figure class="about-fig cmyk">
+        <div class="print"><image-slot id="about-photo" shape="rect" placeholder="Foto do salão"></image-slot></div>
+      </figure>
+    </div>
+  </section>
+
+  <section class="block" id="cardapio">
+    <span class="kicker">Cardápio</span>
+    <h2 class="section-title">Rodízio completo de massas e filés</h2>
+    <p class="section-sub">Rodízio de massas e filés, polenta e sopa de capeletti, além de combos individuais para quem prefere um prato só. Pratos servidos à la carte — não há opção de buffet.</p>
+    <div class="grid-3">
+      <div class="card">
+        <div class="menu-photo"><image-slot id="menu-mignon" shape="rect" placeholder="Combo filé mignon"></image-slot></div>
+        <div class="card-title">Combo individual filé mignon</div>
+        <p class="menu-price">R$ 39,90</p>
+      </div>
+      <div class="card">
+        <div class="menu-photo"><image-slot id="menu-frango" shape="rect" placeholder="Combo filé de frango"></image-slot></div>
+        <div class="card-title">Combo individual filé de frango</div>
+        <p class="menu-price">R$ 34,90</p>
+      </div>
+      <div class="card">
+        <div class="menu-photo"><image-slot id="menu-suino" shape="rect" placeholder="Combo filé suíno"></image-slot></div>
+        <div class="card-title">Combo individual filé suíno</div>
+        <p class="menu-price">R$ 36,90</p>
+      </div>
+      <div class="card">
+        <div class="menu-photo"><image-slot id="menu-peixe" shape="rect" placeholder="Combo filé de peixe"></image-slot></div>
+        <div class="card-title">Combo individual filé de peixe</div>
+        <p class="menu-price">R$ 37,90</p>
+      </div>
+      <div class="card">
+        <div class="menu-photo"><image-slot id="menu-brasileirinho" shape="rect" placeholder="Combo brasileirinho"></image-slot></div>
+        <div class="card-title">Combo brasileirinho</div>
+        <p class="menu-price">R$ 32,90</p>
+      </div>
+      <div class="card">
+        <div class="menu-photo"><image-slot id="menu-executivo" shape="rect" placeholder="Prato executivo"></image-slot></div>
+        <div class="card-title">Prato executivo</div>
+        <p class="menu-price">R$ 44,90</p>
+      </div>
+    </div>
+    <div class="row">
+      <a class="btn btn-ghost" href="{{ whatsappLink }}" target="_blank" rel="noopener">Peça o rodízio pelo WhatsApp</a>
+    </div>
+  </section>
+
+  <section class="block" id="diferenciais">
+    <span class="kicker">Diferenciais</span>
+    <h2 class="section-title">Por que escolher o Bossa Nova</h2>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-title">Rodízio completo</div>
+        <p class="card-body">Massas e filés em sequência, sem precisar escolher um único prato.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Ambiente renovado</div>
+        <p class="card-body">Salão com mesas e cadeiras novas, elegante e aconchegante para o dia a dia ou uma ocasião especial.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Empresa de empreendedoras</div>
+        <p class="card-body">Negócio identificado no Google como liderado por mulheres.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="avaliacoes">
+    <span class="kicker">Avaliações</span>
+    <h2 class="section-title">O que dizem sobre o Bossa Nova</h2>
+    <div class="rating-row">
+      <span class="rating-num">4,6</span>
+      <span class="rating-meta">média de 1.376 avaliações no Google</span>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <p class="quote-text">"Meu pedido foi massa penne com molho de quatro queijos e filé ao alho e óleo."</p>
+      </div>
+      <div class="card">
+        <p class="quote-text">"Ambiente agradável, boa música e ótima sequência de massas e carnes."</p>
+      </div>
+      <div class="card">
+        <p class="quote-text">"A comida é excelente com pratos a la carte (não existe opção de buffet)."</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <span class="kicker">Galeria</span>
+    <h2 class="section-title">Ambiente e gastronomia</h2>
+    <div class="grid-4">
+      <div class="gallery-item"><div class="halftone"><image-slot id="gal-ambiente" shape="rect" placeholder="Ambiente"></image-slot></div><p class="gallery-cap">Ambiente</p></div>
+      <div class="gallery-item"><div class="halftone"><image-slot id="gal-gastronomia" shape="rect" placeholder="Gastronomia"></image-slot></div><p class="gallery-cap">Gastronomia</p></div>
+      <div class="gallery-item"><div class="halftone"><image-slot id="gal-polenta" shape="rect" placeholder="Polenta"></image-slot></div><p class="gallery-cap">Polenta</p></div>
+      <div class="gallery-item"><div class="halftone"><image-slot id="gal-cardapio" shape="rect" placeholder="Cardápio"></image-slot></div><p class="gallery-cap">Cardápio</p></div>
+    </div>
+  </section>
+
+  <section class="block" id="localizacao">
+    <span class="kicker">Localização</span>
+    <h2 class="section-title">Onde estamos</h2>
+    <div class="loc-grid">
+      <figure class="loc-fig halftone">
+        <image-slot id="map-photo" shape="rect" placeholder="Mapa de localização"></image-slot>
+      </figure>
+      <div>
+        <p class="loc-detail"><span class="label">Endereço</span><span class="val">R. Independência, 1434 - Centro, São Leopoldo - RS, 93010-004</span></p>
+        <p class="loc-detail"><span class="label">Horário</span><span class="val">Aberto hoje · fecha às 22h30</span></p>
+        <p class="loc-detail"><span class="label">Telefone</span><span class="val"><a href="tel:+555130371852">(51) 3037-1852</a></span></p>
+        <p class="loc-detail"><span class="label">Instagram</span><span class="val"><a href="https://instagram.com" target="_blank" rel="noopener">instagram.com</a></span></p>
+        <sc-if value="{{ showPeakHours }}" hint-placeholder-val="{{ true }}">
+          <p class="loc-detail"><span class="label">Movimento</span><span class="val">Mais movimentado aos sábados</span></p>
+        </sc-if>
+        <div class="row">
+          <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=R.+Independ%C3%AAncia,+1434+-+Centro,+S%C3%A3o+Leopoldo+-+RS" target="_blank" rel="noopener">Ver rotas</a>
+          <a class="btn btn-ghost" href="{{ whatsappLink }}" target="_blank" rel="noopener">{{ ctaLabel }}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="close-block">
+    <span class="kicker">Fale com a gente</span>
+    <h2>Reserve sua mesa ou peça pelo WhatsApp</h2>
+    <p class="sub">Atendemos para refeição no local, para viagem e entrega. Resposta rápida pelo WhatsApp.</p>
+    <div class="row">
+      <a class="btn btn-primary" href="{{ whatsappLink }}" target="_blank" rel="noopener">{{ ctaLabel }}</a>
+      <a class="btn btn-ghost" href="tel:+555130371852">Ligar: (51) 3037-1852</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <h4>Bossa Nova Restaurante</h4>
+        <p>R. Independência, 1434 - Centro, São Leopoldo - RS, 93010-004</p>
+        <p>Aberto hoje · fecha às 22h30</p>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <p><a href="tel:+555130371852">(51) 3037-1852</a></p>
+        <p><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></p>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <p><a href="#sobre">Sobre</a></p>
+        <p><a href="#cardapio">Cardápio</a></p>
+        <p><a href="#localizacao">Localização</a></p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<div class="whatsapp-fab">
+  <a class="btn btn-primary" href="{{ whatsappLink }}" target="_blank" rel="noopener">{{ ctaLabel }}</a>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;whatsappNumber&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;555130371852&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Contato&quot;},
+  &quot;ctaLabel&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Peça pelo WhatsApp&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Contato&quot;},
+  &quot;showPeakHours&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Localização&quot;}
+}">
+class Component extends DCLogic {
+  renderVals() {
+    const number = (this.props.whatsappNumber ?? '555130371852').replace(/\D/g, '');
+    return {
+      whatsappLink: 'https://wa.me/' + number,
+      ctaLabel: this.props.ctaLabel ?? 'Peça pelo WhatsApp',
+      showPeakHours: this.props.showPeakHours ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>
